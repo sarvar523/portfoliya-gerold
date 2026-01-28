@@ -1,0 +1,246 @@
+/* Services Section */
+.services {
+    padding: 4rem 0;
+    text-align: center;
+    animation: fadeInUp 1s ease-out backwards;
+    scroll-margin-top: 100px;
+}
+
+.section-header {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 2.5rem 3rem;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 1s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.service-item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-item.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle 300px at var(--mouse-x, 0) var(--mouse-y, 0),
+            rgba(135, 80, 247, 0.15),
+            transparent 80%);
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.service-item:hover::after {
+    opacity: 1;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #8750f7;
+    z-index: -1;
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(var(--start-y, -100%));
+    pointer-events: none;
+}
+
+.service-item.no-transition::before {
+    transition: none !important;
+}
+
+.service-item.enter-top::before {
+    --start-y: -100%;
+}
+
+.service-item.enter-bottom::before {
+    --start-y: 100%;
+}
+
+.service-item:hover::before {
+    transform: translateY(0);
+}
+
+.service-item:not(:hover).exit-top::before {
+    transform: translateY(-100%);
+}
+
+.service-item:not(:hover).exit-bottom::before {
+    transform: translateY(100%);
+}
+
+.service-item:hover {
+    border-bottom-color: transparent;
+    z-index: 10;
+}
+
+.service-item:hover,
+.service-item.active {
+    border-bottom-color: transparent;
+}
+
+.service-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #8750f7;
+    min-width: 40px;
+    transition: color 0.8s;
+}
+
+.service-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 250px;
+    transition: all 0.8s;
+}
+
+.service-description {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #aaa;
+    line-height: 1.6;
+    max-width: 600px;
+    transition: color 0.8s;
+    /* Fixed typo from 1.8s */
+}
+
+.service-item:hover .service-number,
+.service-item:hover .service-title,
+.service-item:hover .service-description {
+    color: #fff;
+}
+
+.service-icon {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-icon {
+    font-size: 1.5rem;
+    color: #8750f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.8s ease;
+    width: 40px;
+    height: 40px;
+}
+
+.service-item:hover .arrow-icon {
+    color: #fff;
+    transform: rotate(180deg) scale(1.2);
+}
+
+.service-item .arrow-icon {
+    transform: rotate(0);
+}
+
+.service-item:hover .arrow-icon,
+.service-item.active .arrow-icon {
+    transform: rotate(180deg) scale(1.2);
+    color: white;
+}
+
+@media (max-width: 900px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .service-item {
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .service-title {
+        font-size: 1.5rem;
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .service-title {
+        min-width: unset;
+    }
+
+    .service-description {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .service-icon {
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .service-number {
+        font-size: 1.2rem;
+    }
+
+    .service-title {
+        font-size: 1.3rem;
+    }
+
+    .service-description {
+        font-size: 0.85rem;
+    }
+}

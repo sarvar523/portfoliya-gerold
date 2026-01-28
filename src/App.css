@@ -1,0 +1,194 @@
+/* Created by user on 12/23/2025, 4:25:33 PM */
+/* Last modified by user on 1/22/2026, 2:51:50 PM */
+/* Global Layout */
+
+/* Add safe page padding so content doesn't stick to viewport edges */
+:root {
+  /* use CSS env for notches & safe areas on mobile */
+  --safe-horizontal: env(safe-area-inset-left, 0.5rem);
+  --safe-horizontal-right: env(safe-area-inset-right, 0.5rem);
+  --page-vertical-gap: 0.5rem; /* tighter global vertical gap */
+}
+
+/* Prevent content from sticking to the browser edges */
+body {
+  margin: 0;
+  padding: var(--page-vertical-gap) var(--safe-horizontal) var(--page-vertical-gap) var(--safe-horizontal-right);
+  background: linear-gradient(180deg, #0b0b0f 0%, #06060a 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+.app-container {
+  max-width: 1350px;
+  margin: calc(var(--page-vertical-gap) * 0.8) auto; /* tighter vertical margin to reduce height */
+  padding: 0 2rem;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.02); /* subtle card background to detach from wall */
+  border-radius: 12px; /* slight rounding so it doesn't look glued to edges */
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+  height: auto; /* ensure container doesn't force extra height */
+  min-height: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(4deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(4deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(4deg);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(135, 80, 247, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(135, 80, 247, 0.7);
+  }
+
+  100% {
+    box-shadow: 0 0 20px rgba(135, 80, 247, 0.4);
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #8750f7 30%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #8750f7;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Common Section Headers */
+.section-header {
+  margin-bottom: 1rem; /* tightened section spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: #aaa;
+  max-width: 700px;
+  margin: 0 auto 1rem; 
+  line-height: 1.6;
+  text-align: center;
+}
+
+.reveal {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Responsive adjustments */
+/* Mobile-first: base sizes are already set; tweak for small screens */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0 1rem;
+    max-width: 100%;
+    margin: 0.5rem auto; /* tighter mobile gap */
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .section-description {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin-bottom: 1rem; /* tightened mobile spacing */
+  }
+
+  a::after {
+    bottom: -3px;
+    height: 1.5px;
+  }
+}
+
+/* Larger screens: refine spacing */
+@media (min-width: 1200px) {
+  .app-container {
+    padding: 0 3rem;
+  }
+
+  .section-title {
+    font-size: 3.2rem;
+  }
+}
+@media (max-width: 768px) {
+  .project-card {
+    min-height: 150px;
+    padding: 1.8rem 1.5rem;
+  }
+}

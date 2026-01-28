@@ -1,0 +1,72 @@
+/* Scroll To Top */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #140c1c;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(135, 80, 247, 0.6);
+}
+
+.scroll-to-top svg {
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover svg {
+    transform: scale(1.1);
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+    pointer-events: none;
+}
+
+.progress-ring-bg {
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 2px;
+}
+
+.progress-ring-circle {
+    stroke: #8750f7;
+    stroke-width: 2px;
+    stroke-dasharray: 138.23px;
+    /* 2 * PI * 22 */
+    stroke-dashoffset: calc(138.23px - (138.23px * var(--scroll-percent-val, 0)) / 100);
+    transition: stroke-dashoffset 0.1s linear;
+    stroke-linecap: round;
+}
+
+.arrow-svg {
+    position: relative;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    color: #8750f7;
+}

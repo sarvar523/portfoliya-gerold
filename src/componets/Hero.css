@@ -1,0 +1,293 @@
+/* Created by user on 1/15/2026, 3:05:54 PM */
+/* Last modified by user on 1/22/2026, 2:31:36 PM */
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%) scale(1.5);
+    pointer-events: none;
+    object-fit: cover;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(5, 5, 5, 0.7) 0%, #050505 100%);
+    backdrop-filter: blur(2px);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* add horizontal padding to avoid edge-sticking */
+    padding: 8rem 2rem;
+    background: transparent;
+    gap: 4rem;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+    position: relative;
+    top: calc(var(--scroll-y, 0px) * 0.3);
+}
+
+.hero-content h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    font-weight: 700;
+    margin: 0.5rem 0 1.5rem 0;
+    color: #fff;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #aaa;
+    max-width: 500px;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.outline-btn {
+    background: transparent;
+    border: 1px solid #8750f7;
+    color: #8750f7;
+    padding: 0.9rem 2.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 0 15px rgba(135, 80, 247, 0.1);
+}
+
+.outline-btn:hover {
+    background: #8750f7;
+    color: white;
+    box-shadow: 0 0 25px rgba(135, 80, 247, 0.4);
+}
+
+
+.socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #8750f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8750f7;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon:hover {
+    background: #8750f7;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(135, 80, 247, 0.3);
+}
+
+/* Hero Visual (Image Card) */
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.image-frame {
+    position: relative;
+    border: 2px solid #333;
+    border-radius: 40px;
+    padding: 0;
+    transform: rotate(5deg) !important;
+    background: #111;
+    overflow: hidden;
+    width: 420px;
+    height: 520px;
+    animation: float 6s ease-in-out infinite;
+    transition: all 0.4s ease;
+}
+
+/* Glow Effect behind card */
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 8%;
+    width: 380px;
+    height: 480px;
+    background: linear-gradient(135deg, #8750f7 0%, transparent 60%);
+    filter: blur(60px);
+    transform: rotate(4deg);
+    z-index: -1;
+    opacity: 0.5;
+    animation: glowPulse 4s infinite alternate;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
+
+.image-frame:hover {
+    border-color: #8750f7;
+    transform: rotate(0deg) !important;
+}
+
+.stats {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding-top: 0;
+    gap: 5rem;
+    animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item h2 {
+    font-size: 3.2rem;
+    margin: 0;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1;
+}
+
+.stat-item p {
+    margin: 0;
+    color: #ccc;
+    font-size: 1rem;
+    text-align: left;
+    line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .hero-content p {
+        margin: 0 auto 2rem auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Prevent hero parallax offset on small screens to avoid overlap */
+    .hero-content {
+        top: 0 !important;
+    }
+
+    /* Reduce stat number sizes on narrow screens */
+    .stat-item h2 {
+        font-size: 2.4rem;
+    }
+
+    .stats {
+        margin-top: 2.5rem;
+    }
+
+    .hero-visual {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .image-frame {
+        width: 300px;
+        height: 380px;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-item h2 {
+        font-size: 1.8rem;
+    }
+
+    .stats {
+        gap: 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .outline-btn {
+        z-index: 2;
+    }
+}

@@ -1,0 +1,462 @@
+.about {
+    background-image:
+        linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)),
+        url('/mac.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+/* Page Header / Banner */
+.page-header {
+    position: relative;
+    height: 450px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    margin-top: 100px;
+    /* Account for fixed navbar */
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.header-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.85);
+    transition: transform 0.8s ease;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(5, 5, 5, 0.4) 0%, #050505 100%);
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.header-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.header-subtitle {
+    font-size: 1.25rem;
+    color: #ccc;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* Resume Section */
+.resume {
+    padding: 8rem 0;
+    background: #050505;
+}
+
+.resume-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.resume-header {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.resume-header .icon {
+    color: #8750f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.resume-item {
+    background: #140c1c;
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-item:hover {
+    background: linear-gradient(90deg, #2a1458 0%, #8750f7 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(135, 80, 247, 0.15);
+}
+
+.resume-item .date {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #8750f7;
+    margin-bottom: 0.8rem;
+    transition: color 0.4s ease;
+}
+
+.resume-item:hover .date {
+    color: #fff;
+}
+
+.resume-item h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: #fff;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    transition: color 0.4s ease;
+}
+
+.resume-item p {
+    color: #aaa;
+    font-size: 1rem;
+    transition: color 0.4s ease;
+    margin: 0;
+}
+
+.resume-item:hover p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Skills Section */
+.skills {
+    padding: 100px 0;
+    position: relative;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 4rem auto 0;
+    padding: 0 1rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.skill-card {
+    background: rgba(20, 12, 28, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    width: 100%;
+    aspect-ratio: 1 / 1.1;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(135, 80, 247, 0.1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(135, 80, 247, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.skill-card:hover {
+    background: rgba(42, 20, 88, 0.4);
+    border-color: #8750f7;
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(135, 80, 247, 0.2);
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+.skill-icon-box {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.skill-icon {
+    font-size: 3.5rem;
+    color: #8750f7;
+    filter: grayscale(0.8) brightness(0.8);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-icon-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: grayscale(0.8) brightness(0.8);
+    border-radius: 6px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-card:hover .skill-icon-img {
+    filter: grayscale(0) brightness(1.2) drop-shadow(0 0 15px rgba(135, 80, 247, 0.8));
+    transform: scale(1.15) rotate(5deg);
+}
+
+.skill-card:hover .skill-icon {
+    filter: grayscale(0) brightness(1.2);
+    transform: scale(1.15) rotate(5deg);
+    color: #fff;
+    text-shadow: 0 0 15px rgba(135, 80, 247, 0.8);
+}
+
+/* Specific Brand Colors on Hover */
+.skill-card:hover .fa-react {
+    color: #61DAFB;
+    text-shadow: 0 0 15px rgba(97, 218, 251, 0.6);
+}
+
+.skill-card:hover .fa-html5 {
+    color: #E34F26;
+    text-shadow: 0 0 15px rgba(227, 79, 38, 0.6);
+}
+
+.skill-card:hover .fa-css3-alt {
+    color: #1572B6;
+    text-shadow: 0 0 15px rgba(21, 114, 182, 0.6);
+}
+
+.skill-card:hover .fa-js-square {
+    color: #F7DF1E;
+    text-shadow: 0 0 15px rgba(247, 223, 30, 0.4);
+}
+
+.skill-percent {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #777;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+}
+
+.skill-card:hover .skill-percent {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.skill-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #8750f7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover .skill-name {
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+/* Experience Section Styles */
+.experience {
+    padding: 6rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.experience-item {
+    display: flex;
+    gap: 3rem;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.experience-item.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.experience-item:hover {
+    background: rgba(135, 80, 247, 0.05);
+    border-color: rgba(135, 80, 247, 0.2);
+    transform: translateY(-5px);
+}
+
+.exp-date {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #8750f7;
+    min-width: 150px;
+}
+
+.exp-content h3 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.exp-content p {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 992px) {
+    .resume-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        padding: 0 2rem;
+    }
+
+    .experience {
+        padding: 4rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        height: 350px;
+        margin-top: 80px;
+    }
+
+    .header-title {
+        font-size: 3rem;
+    }
+
+    .header-subtitle {
+        font-size: 1rem;
+    }
+
+    .resume-header {
+        font-size: 2.4rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .resume-item {
+        padding: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .skill-card {
+        height: 160px;
+    }
+
+    .experience-item {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .exp-date {
+        min-width: unset;
+    }
+
+    .exp-content h3 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 2.2rem;
+    }
+
+    .resume-header {
+        font-size: 1.8rem;
+    }
+
+    .resume-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        padding: 0 2rem;
+    }
+
+    .skill-card {
+        height: 140px;
+    }
+
+    .exp-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .exp-content p {
+        font-size: 0.9rem;
+    }
+}
