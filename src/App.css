@@ -7,7 +7,32 @@
   /* use CSS env for notches & safe areas on mobile */
   --safe-horizontal: env(safe-area-inset-left, 0.5rem);
   --safe-horizontal-right: env(safe-area-inset-right, 0.5rem);
-  --page-vertical-gap: 0.5rem; /* tighter global vertical gap */
+  --page-vertical-gap: 0.5rem;
+  /* tighter global vertical gap */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0b0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8750f7;
+  border-radius: 10px;
+  border: 3px solid #0b0b0f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a1458;
+}
+
+::selection {
+  background: rgba(135, 80, 247, 0.3);
+  color: #fff;
 }
 
 /* Prevent content from sticking to the browser edges */
@@ -22,15 +47,19 @@ body {
 
 .app-container {
   max-width: 1350px;
-  margin: calc(var(--page-vertical-gap) * 0.8) auto; /* tighter vertical margin to reduce height */
+  margin: calc(var(--page-vertical-gap) * 0.8) auto;
+  /* tighter vertical margin to reduce height */
   padding: 0 2rem;
   overflow-x: hidden;
   position: relative;
   z-index: 1;
-  background: rgba(255,255,255,0.02); /* subtle card background to detach from wall */
-  border-radius: 12px; /* slight rounding so it doesn't look glued to edges */
-  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
-  height: auto; /* ensure container doesn't force extra height */
+  background: rgba(255, 255, 255, 0.02);
+  /* subtle card background to detach from wall */
+  border-radius: 12px;
+  /* slight rounding so it doesn't look glued to edges */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+  height: auto;
+  /* ensure container doesn't force extra height */
   min-height: 0;
 }
 
@@ -109,7 +138,8 @@ a:hover::after {
 
 /* Common Section Headers */
 .section-header {
-  margin-bottom: 1rem; /* tightened section spacing */
+  margin-bottom: 1rem;
+  /* tightened section spacing */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,7 +159,7 @@ a:hover::after {
   font-size: 1.1rem;
   color: #aaa;
   max-width: 700px;
-  margin: 0 auto 1rem; 
+  margin: 0 auto 1rem;
   line-height: 1.6;
   text-align: center;
 }
@@ -145,7 +175,8 @@ a:hover::after {
   .app-container {
     padding: 0 1rem;
     max-width: 100%;
-    margin: 0.5rem auto; /* tighter mobile gap */
+    margin: 0.5rem auto;
+    /* tighter mobile gap */
   }
 
   .section-title {
@@ -167,7 +198,8 @@ a:hover::after {
   .section-description {
     font-size: 0.95rem;
     max-width: 100%;
-    margin-bottom: 1rem; /* tightened mobile spacing */
+    margin-bottom: 1rem;
+    /* tightened mobile spacing */
   }
 
   a::after {
@@ -186,6 +218,7 @@ a:hover::after {
     font-size: 3.2rem;
   }
 }
+
 @media (max-width: 768px) {
   .project-card {
     min-height: 150px;

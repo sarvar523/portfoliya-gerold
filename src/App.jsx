@@ -12,12 +12,19 @@ import Testimonials from './componets/Testimonials';
 import Blogs from './componets/Blogs';
 import Footer from './componets/Footer';
 import ScrollToTop from './componets/ScrollToTop';
+import Preloader from './componets/Preloader';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [load, setLoad] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
+    // Initial loading timer
+    const timer = setTimeout(() => {
+      setLoad(false);
+    }, 2500);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -49,36 +56,36 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <div className="cursor-follower"></div>
-      <div className="cursor-follower"></div>
+    <>
+      {load && <Preloader />}
+      <div className="app-container" style={{ visibility: load ? 'hidden' : 'visible' }}>
+        <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
-      <Navbar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <main>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <div id="home"><Hero /></div>
+                <div id="services"><Services /></div>
+                <div id="portfolio"><Portfolio /></div>
+                <div id="about"><About /></div>
+                <div id="testimonials"><Testimonials /></div>
+                <div id="blog"><Blogs /></div>
+              </>
+            } />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolios" element={<Portfolio />} />
+            <Route path="/blog" element={<Blogs />} />
+            <Route path="/contact" element={<Footer />} />
+          </Routes>
+        </main>
 
-      <main>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Services />
-              <Portfolio />
-              <About />
-              <Testimonials />
-              <Blogs />
-            </>
-          } />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolios" element={<Portfolio />} />
-          <Route path="/blog" element={<Blogs />} />
-          <Route path="/contact" element={<Footer />} />
-        </Routes>
-      </main>
-
-      {/* Show footer on all pages except maybe specific ones, but usually keep it */}
-      {location.pathname !== '/contact' && <Footer />}
-      <ScrollToTop />
-    </div>
+        {/* Show footer on all pages except maybe specific ones, but usually keep it */}
+        {location.pathname !== '/contact' && <Footer />}
+        <ScrollToTop />
+      </div>
+    </>
   );
 }
 

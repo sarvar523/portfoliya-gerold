@@ -17,6 +17,23 @@ const Portfolio = () => {
                 });
             }
         }
+
+        // Local observer for portfolio items to fix the filtering visibility issue
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal');
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        const items = document.querySelectorAll('.portfolio-item');
+        items.forEach(item => observer.observe(item));
+
+        return () => observer.disconnect();
     }, [activeFilter]);
 
     return (
@@ -63,10 +80,10 @@ const Portfolio = () => {
             <div className="portfolio-grid">
                 {/* 1-Loyiha */}
                 {(activeFilter === 'All' || activeFilter === 'UX/UI') && (
-                    <a href="https://sarvar523.github.io/6-oy-2-dars/">
+                    <a href="https://sarvar523.github.io/6-oy-2-dars/" target="_blank">
                         <div className="portfolio-item">
                             <div className="portfolio-image">
-                                <img src="./les.png" alt="Bigger, Bolder and Better" />
+                                <img src="./les.png" alt="Bigger, Bolder and Better" target="_blank" />
                                 <div className="portfolio-overlay">
                                     <div className="portfolio-info-card">
                                         <div className="info-content">
@@ -86,70 +103,70 @@ const Portfolio = () => {
 
                 {/* 2-Loyiha */}
                 {(activeFilter === 'All' || activeFilter === 'Apps') && (
-                    <a href="https://sarvar523.github.io/bankomat/">
+                    <a href="https://sarvar523.github.io/bankomat/" target="_blank">
                         <div className="portfolio-item">
                             <div className="portfolio-image">
-                                <img src="./bank.png" alt="Sebastian Camargo" />
+                                <img src="./bank.png" alt="Sebastian Camargo" target="_blank" />
                                 <div className="portfolio-overlay">
                                     <div className="portfolio-info-card">
                                         <div className="info-content">
-                                        <h3>Sebastian Camargo</h3>
-                                        <p>Mobile experience design for a premium portfolio.</p>
+                                            <h3>Sebastian Camargo</h3>
+                                            <p>Mobile experience design for a premium portfolio.</p>
+                                        </div>
+                                        <div className="info-arrow">↗</div>
                                     </div>
-                                    <div className="info-arrow">↗</div>
                                 </div>
                             </div>
+                            <div className="portfolio-info-static">
+                                <p>Apps</p>
+                            </div>
                         </div>
-                        <div className="portfolio-info-static">
-                            <p>Apps</p>
-                        </div>
-                    </div>
                     </a>
                 )}
 
                 {/* 3-Loyiha */}
                 {(activeFilter === 'All' || activeFilter === 'Branding') && (
-                    <a href="https://sarvar523.github.io/6-oy-11-dars/">
-                    <div className="portfolio-item">
-                        <div className="portfolio-image">
-                            <img src="./pokemon.png" alt="Grow Your Business" />
-                            <div className="portfolio-overlay">
-                                <div className="portfolio-info-card">
-                                    <div className="info-content">
-                                        <h3>Grow Your Business, With Us</h3>
-                                        <p>Conversion-optimized landing page for business growth.</p>
+                    <a href="https://sarvar523.github.io/6-oy-11-dars/" target="_blank">
+                        <div className="portfolio-item">
+                            <div className="portfolio-image">
+                                <img src="./pokemon.png" alt="Grow Your Business" target="_blank" />
+                                <div className="portfolio-overlay">
+                                    <div className="portfolio-info-card">
+                                        <div className="info-content">
+                                            <h3>Grow Your Business, With Us</h3>
+                                            <p>Conversion-optimized landing page for business growth.</p>
+                                        </div>
+                                        <div className="info-arrow">↗</div>
                                     </div>
-                                    <div className="info-arrow">↗</div>
                                 </div>
                             </div>
+                            <div className="portfolio-info-static">
+                                <p>Branding</p>
+                            </div>
                         </div>
-                        <div className="portfolio-info-static">
-                            <p>Branding</p>
-                        </div>
-                    </div>
                     </a>
                 )}
 
                 {/* 4-Loyiha */}
                 {(activeFilter === 'All' || activeFilter === 'Content') && (
-                    <a href="https://sarvar523.github.io/velo-org/">
-                    <div className="portfolio-item">
-                        <div className="portfolio-image">
-                            <img src="./velosiped.png" alt="Deloitte Strategy" />
-                            <div className="portfolio-overlay">
-                                <div className="portfolio-info-card">
-                                    <div className="info-content">
-                                        <h3>Deloitte. Strategy</h3>
-                                        <p>Enterprise solutions and strategic content layout.</p>
+                    <a href="https://sarvar523.github.io/velo-org/" target="_blank">
+                        <div className="portfolio-item">
+                            <div className="portfolio-image">
+                                <img src="./velosiped.png" alt="Deloitte Strategy" target="_blank" />
+                                <div className="portfolio-overlay">
+                                    <div className="portfolio-info-card">
+                                        <div className="info-content">
+                                            <h3>Deloitte. Strategy</h3>
+                                            <p>Enterprise solutions and strategic content layout.</p>
+                                        </div>
+                                        <div className="info-arrow">↗</div>
                                     </div>
-                                    <div className="info-arrow">↗</div>
                                 </div>
                             </div>
+                            <div className="portfolio-info-static">
+                                <p>Content</p>
+                            </div>
                         </div>
-                        <div className="portfolio-info-static">
-                            <p>Content</p>
-                        </div>
-                    </div>
                     </a>
                 )}
             </div>
