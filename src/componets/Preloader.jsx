@@ -19,4 +19,4 @@ const Preloader = () => {
     );
 };
 
-export default Preloader;x``
+export default Preloader;
